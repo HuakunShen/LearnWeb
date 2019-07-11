@@ -2,13 +2,16 @@ var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
-    Campground = require('./models/campground');
+    Campground = require('./models/campground'),
+    // User = require('./models/user'),
+    // Comment = require('./models/comment'),
+    seedDB = require('./seeds');
 
-mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/yelp_camp", {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
+seedDB();
 // Schema Setup
 
 // Campground.create(
@@ -33,7 +36,7 @@ app.get("/", function (req, res) {
 // INDEX Route - show all campground
 app.get("/campgrounds", function (req, res) {
     // Retrieve all data from db
-    Campground.find({}, function(err, campgrounds) {
+    Campground.find({}, function (err, campgrounds) {
         if (err) {
             console.log(err);
         } else {
@@ -50,7 +53,7 @@ app.post("/campgrounds", function (req, res) {
     var description = req.body.description;
     var newCampground = {name: name, image: image, description: description};
     // Save new to db
-    Campground.create(newCampground, function(err, newCreated) {
+    Campground.create(newCampground, function (err, newCreated) {
         if (err) {
             console.log(err);
         } else {
@@ -63,20 +66,21 @@ app.post("/campgrounds", function (req, res) {
 });
 
 // NEW - Show form to create new campground
-app.get("/campgrounds/new", function(req, res){
-    res.render("new.ejs"); 
+app.get("/campgrounds/new", function (req, res) {
+    res.render("new.ejs");
 });
 
 // SHOW
-app.get("/campgrounds/:id", function(req, res) {
-    Campground.findById(req.params.id, function(err, foundCampground) {
+app.get("/campgrounds/:id", function (req, res) {
+    Campground.findById(req.params.id).populate("comments").exec(function (err, foundCampground) {
         if (err) {
             console.log(err);
         } else {
-            res.render("show", {campground: foundCampground});        
+            console.log(foundCampground);
+            res.render("show", {campground: foundCampground});
         }
     });
-    
+
 });
 
 
