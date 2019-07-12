@@ -6,6 +6,6 @@ body {
     width: 100%;
 }
 
-#campground-delete-form {
+.delete-form {
     display: inline;
 }

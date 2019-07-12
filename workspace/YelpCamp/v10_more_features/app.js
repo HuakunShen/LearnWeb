@@ -9,10 +9,7 @@ var express = require("express"),
     User = require("./models/user");
 
 // send current user to every route
-app.use(function(req, res, next) {
-    res.locals.currentUser = req.user;
-    next();
-});
+
 
 
 
@@ -37,6 +34,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser((User.deserializeUser()));
 
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 // require routes from separate files
 const commentRoutes = require("./routes/comments");

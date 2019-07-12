@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router({mergeParams: true});
 const Campground = require("../models/campground"),
-      Comment    = require("../models/comment");
+    Comment = require("../models/comment");
 
 
 // create a new comment
@@ -49,7 +49,60 @@ router.post('/', isLoggedIn, (req, res) => {
     });
 });
 
+// edit and update comments routes
+router.get("/:comment_id/edit", checkCommentOwnership, (req, res) => {
+    Comment.findById(req.params.comment_id, (err, foundComment) => {
+        if (err) {
+            res.redirect("back");
+        } else {
+            res.render("comments/edit", {campground_id: req.params.id, comment: foundComment})
+        }
+    })
+});
+// execute update
+router.put("/:comment_id", checkCommentOwnership, (req, res) => {
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, updated_comment) => {
+        if (err) {
+            res.redirect("back");
+        } else {
+            res.redirect("/campgrounds/" + req.params.id);
+        }
+    })
+});
+
+// delete comment
+router.delete("/:comment_id", checkCommentOwnership, (req, res) => {
+    Comment.findByIdAndRemove(req.params.comment_id, (err) => {
+        if (err) {
+            res.redirect("back");
+        } else {
+            res.redirect("/campgrounds/" + req.params.id);
+        }
+    })
+});
+
+
 // middleware
+function checkCommentOwnership(req, res, next) {
+    if (req.isAuthenticated()) {
+        Comment.findById(req.params.comment_id, (err, foundComment) => {
+            // does the user own the campground
+            if (err) {
+                res.redirect("back");
+            } else {
+                if (foundComment.author.id.equals(req.user._id)) {
+                    next();
+                } else {
+                    res.redirect("back");
+                }
+            }
+        });
+    } else {
+        res.redirect("back");
+    }
+}
+
+
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
