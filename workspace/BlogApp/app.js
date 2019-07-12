@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 
-//Mongoose model config
+//Mongoose models config
 const blogSchema = new mongoose.Schema({
     title: String,
     image: String,
