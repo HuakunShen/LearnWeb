@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Onedrive Embed</title>
+    </head>
+    <style>
+        .container {
+            padding: 5vw;
+        }
+
+        img {
+            width: 20%;
+            height: 20%;
+        }
+
+        .onedrive-video {
+            display: block;
+            width: 50vw;
+            height: 50vh;
+        }
+
+        .youtube-video {
+            display: block;
+            width: 50vw;
+            height: 50vh;
+        }
+
+        iframe,
+        img,
+        h1 {
+            border: 3px solid red;
+        }
+
+        h1 {
+            margin: 1em auto;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <h1>Embed Onedrive Image</h1>
+            <img
+                src="https://2sm1ra.dm.files.1drv.com/y4m8v-pSyTa846GzW4f8GYoCOLQFLjTRJ6sC6R70kLtKIDlG9wqI9SN6FB32vIS_Yn1g5T4oHqTlch3Pvh7RfmC6aUlCqJT_VT89cqilVv1_N0Zm1q_IEf1y4GxfBta26g65deinWn1w4oMb8KIj-6qKz_uzZOghvN9Sd57VaepjUa6fwxdkaLKirNTIgv1yAfG1ffHQeRmz5K7lecBQkKOoQ?width=3456&height=4608&cropmode=none"
+                width="3456"
+                height="4608"
+            />
+            <h1>Embed Onedrive Video</h1>
+            <iframe
+                class="onedrive-video"
+                src="https://onedrive.live.com/embed?cid=7A78FD2CB5D891D5&resid=7A78FD2CB5D891D5%2170320&authkey=ACgCup90a34G_28"
+                width="320"
+                height="180"
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen
+            ></iframe>
+            <h1>EMbed Youtube Video</h1>
+            <iframe
+                class="youtube-video"
+                width="1527"
+                height="685"
+                src="https://www.youtube.com/embed/spgg1tDBxQs"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+            ></iframe>
+        </div>
+    </body>
+</html>
