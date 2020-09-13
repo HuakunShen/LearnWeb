@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Syntax Highlight</title>
+        <link
+            rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css"
+        />
+    </head>
+    <body>
+        <pre><code class="lang-python">
+            from isSorted import *
+            def merge_sort(arr: list):
+                # Base Case
+                if len(arr) <= 1:
+                    return
+                # Divide
+                mid = len(arr) // 2
+                left = arr[:mid]
+                right = arr[mid:]
+                # Conquer
+                merge_sort(left)
+                merge_sort(right)
+                # Combine (Generate) final solution
+                merge(left, right, arr)
+            
+            
+            def merge(left: list, right: list, arr: list):
+                i = j = num = 0
+                while i < len(left) and j < len(right):
+                    if left[i] < right[j]:
+                        arr[num] = left[i]
+                        i += 1
+                    else:
+                        arr[num] = right[j]
+                        j += 1
+                    num += 1
+                    
+                if i < len(left):
+                    arr[num:] = left[i:]
+                elif j < len(right):
+                    arr[num:] = right[j:]
+                
+            if __name__ == "__main__":
+                sorted_test(100, 100, merge_sort)                
+        </code></pre>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+    </body>
+</html>
