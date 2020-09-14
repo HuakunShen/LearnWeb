@@ -130,9 +130,15 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2021 07:28:00 GMT; Secure; HttpOnly
 
 ##### Possible Values:
 
-- **Strict:** cookie is sent only to the same site as the one that originated it
-- **Lax:** similar, with an exception for when the user navigates to a URL from an external site, such as by following a link
+- **Strict:** cookie is sent only to the same site as the one that originated it (website that sends the request is the same as the one that receives it)
+
+- **Lax:** similar, with an exception for when the user navigates to a URL from an external site, such as by following a link.
+
+  With **Strict**, when a client navigate to your website from the URL of an external site, the Cookie wouldn't be sent.
+
 - **None:** no restrictions on cross-site requests
+
+`Lax` is a good choice for cookies affecting the display of the site, Strict` being useful for cookies related to actions your user is taking.
 
 **Default:** `SameSite=Lax`
 
