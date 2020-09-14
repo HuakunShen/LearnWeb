@@ -1,0 +1,56 @@
+const express = require("express");
+const router = express.Router({mergeParams: true});
+const Campground = require("../models/campground"),
+      Comment    = require("../models/comment");
+
+
+// create a new comment
+// if not logged in /authenticated, not allowed to add comments
+// basically run the middleware function "isLoggedIn" first, if logged in, "isLoggedIn" will direct to "next"
+// which is the callback following
+// only prevent user from seeing this page (form to coshare mment), could use postman to send post request, have to prevent
+// that
+router.get('/new', isLoggedIn, (req, res) => {
+    Campground.findById(req.params.id, (err, campground) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("comments/new", {campground: campground})
+        }
+    });
+});
+
+// post a comment
+// if not logged in, even if a post request is sent (maybe not from the form from the route above), new comment
+// is still prevented
+router.post('/', isLoggedIn, (req, res) => {
+    // find campground
+
+    Campground.findById(req.params.id, (err, campground) => {
+        if (err) {
+            console.log(err);
+            res.redirect("/campgrounds")
+        } else {
+            Comment.create(req.body.comment, (err, comment) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    campground.comments.push(comment);
+                    campground.save();
+                    res.redirect('/campgrounds/' + campground._id);
+                }
+            })
+        }
+    });
+});
+
+// middleware
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect("/login");
+    }
+}
+
+module.exports = router;
