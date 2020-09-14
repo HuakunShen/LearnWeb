@@ -9,12 +9,12 @@
 ### Session Cookie
 
 <p align=center>
-    <img src="JWT.assets/image-20200913180715218.png" alt="image-20200913180715218" width="50%" />
+    <img src="JWT.assets/image-20200913180715218.png" alt="image-20200913180715218" width="60%" />
 </p>
 ### JWT
 
 <p align=center>
-    <img src="JWT.assets/image-20200913180744017.png" alt="image-20200913180744017" width="50%" />
+    <img src="JWT.assets/image-20200913180744017.png" alt="image-20200913180744017" width="60%" />
 </p>
 
 A expire date should be set in the payload of the token for security reasons.
@@ -43,7 +43,7 @@ To verify the token, the server can simply hash the first 2 parts (red+purple) a
 
 ## Difference
 
-With JWT, the server doesn't need to session id in its memory. All user are stored within the JWT.
+With JWT, the server doesn't need to store session id in its memory. All user info related to authentication are stored within the JWT.
 
 ## Advantage
 
