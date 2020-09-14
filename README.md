@@ -1,5 +1,9 @@
 # LearnWeb
 
+## General
+
+[Cookies](./Notes/Cookies.md)
+
 ## Frontend
 
 [Browser Storage (Cookies, SessionStorage, LocalStorage)](./Notes/BrowserStorage.md)
@@ -9,3 +13,5 @@
 ## Authentication
 
 [JWT (Json Web Token)](./Notes/JWT.md)
+
+[Cookies](./Notes/Cookies.md)
