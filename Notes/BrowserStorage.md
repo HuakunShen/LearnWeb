@@ -64,6 +64,8 @@ Data persist when a tab is closed or browser restarts (no expiration time).
 
 Data in a `localStorage` object created in a "private browsing" or "incognito" session is cleared when the last "private" tab is closed.
 
+Note: `localStorage` is accessible only to the same domain (excluding sub-domains). So developer won't need to worry about using duplicate `localStorage` key name as other websites.
+
 ## Session Storage
 
 [MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/sessions)
