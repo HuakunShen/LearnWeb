@@ -19,9 +19,6 @@ jobs:
         with:
           submodules: recursive
       - name: Run link check
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
-        with:
-          use-quiet-mode: 'no'
-          use-verbose-mode: 'yes'
-          check-modified-files-only: 'yes'
-          config-file: '.mlc_config.json'
+        run: |
+        npm i -g markdown-link-check
+        find . -name '*.md' -not -path "**/node_modules/*" -exec npx markdown-link-check {} \;
