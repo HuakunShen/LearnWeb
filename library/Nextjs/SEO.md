@@ -193,9 +193,118 @@ export default IndexPage
 See [Canonical Tag](../../comon/SearchEngine/CanonicalTag.md).
 ![[CanonicalTag]]
 
+## Rendering Strategies
+> The most important thing for SEO is that page data and metadata is available on page load without JavaScript.
+
+- SSG (Static Site Generation)
+- SSR (Server-Side Rendering)
+- ISR (Incremental Static Regeneration)
+	- When there is a large amount of pages taking too much time to generate at build time. Next.js allows you to create or update static pages after you have built your site. 
+	- [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration) enables developers and content editors to use static generation on a per-page basis, without needing to rebuild the entire site. With ISR, you can retain the benefits of static while scaling to millions of pages
+- CSR (Client Side Rendering)
+
+See [Rendering Strategies](https://nextjs.org/learn/seo/rendering-and-ranking/rendering-strategies) and [Nextjs Basics](./Basics.md) for more details.
+
+## AMP
+Nextjs supports [AMP](https://nextjs.org/learn/seo/rendering-and-ranking/amp).
+
+## Performance & Core Web Vitals
+See [SEO](../../common/SearchEngine/SEO.md) for details.
+### Auto Image Optimization
+[Tutorial](https://nextjs.org/learn/seo/improve/images)
+#### On-demand Optimization
+Instead of optimizing images at build time, Next.js optimizes images on-demand as users request them. Unlike static site generators and static-only solutions, build times don't increase, whether shipping ten images or ten million images.
+#### Lazy Loaded Images
+Images are lazy loaded by default. Page speed won't be penalized for images housed outside of the viewport. Images only load when they come into view.
+#### Avoids CLS
+Images are always rendered to avoid Cumulative Layout Shift (CLS).
+#### Sample Code
+```jsx
+import Image from 'next/image'
+return <Image src="" alt="" width={1920} height={1080}/>
+```
+
+### Dynamic Imports
+[Tutorial 1](https://nextjs.org/learn/seo/improve/dynamic-imports)
+[Tutorial 2](https://nextjs.org/learn/seo/improve/dynamic-import-components)
+Goal: reduce the amount of JavaScript loaded during initial page load from third-party libraries.
+
+```jsx
+import dynamic from 'next/dynamic'
+import CodeSampleModal from '../components/CodeSampleModal'
+
+// Dynamic Import
+const CodeSampleModal = dynamic(() => import('../components/CodeSampleModal'), {
+  ssr: false
+})
+```
+
+### Optimizing Fonts
+[Tutorial](https://nextjs.org/learn/seo/improve/fonts)
+Next.js has built-in [Automatic Webfont Optimization](https://nextjs.org/docs/basic-features/font-optimization). By default, Next.js will automatically inline font CSS at build time, eliminating an extra round trip to fetch font declarations. This results in improvements to First Contentful Paint (FCP) and Largest Contentful Paint (LCP).
+
+```jsx
+// regular version
+<link href="https://fonts.googleapis.com/css2?family=Inter" rel="stylesheet" />
+// optimized fonts
+<style data-href="https://fonts.googleapis.com/css2?family=Inter">
+  @font-face{font-family:'Inter';font-style:normal.....
+</style>
+```
+
+### Optimizing Third-Party Scripts
+[Tutorial](https://nextjs.org/learn/seo/improve/third-party-scripts)
+Embedding third-party authored code can delay page content from rendering and affect user performance if it is loaded too early.
+Next.js provides a built-in [Script component](https://nextjs.org/docs/basic-features/font-optimization) that optimizes loading for any third-party script, while giving developers the option to **decide when to fetch and execute it**.
+```jsx
+import Head from 'next/head'
+import Script from 'next/script'
+
+function IndexPage() {
+  return (
+    <div>
+      <Head>
+        <script src="https://www.googletagmanager.com/gtag/js?id=123" />
+		<!-- Optimized -->
+		<Script
+			strategy="afterInteractive"
+			src="https://www.googletagmanager.com/gtag/js?id=123"
+		/>
+      </Head>
+    </div>
+  )
+}
+
+```
+
+## Monitoring your Core Web Vitals
+[Link](https://nextjs.org/learn/seo/monitor)
+
+### Next.js Analytics
+[Next.js Analytics](https://nextjs.org/analytics) allows you to analyze and measure the performance of pages using Core Web Vitals.
+
+### Custom Reporting
+It is also possible to use the built-in relayer Next.js Analytics uses and send the data to your own service or push them to Google Analytics.
+Add the following to `pages/_app.js`.
+```js
+export function reportWebVitals(metric) {
+  console.log(metric)
+}
+```
+### Data Studio
+https://nextjs.org/learn/seo/monitor/data-studio
+Use [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report) dataset.
+
+
+
+
 
 
 ## Reference
 - https://nextjs.org/learn/seo/crawling-and-indexing/status-codes
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 - https://nextjs.org/learn/seo/crawling-and-indexing/metatags
+- https://nextjs.org/learn/seo/rendering-and-ranking/rendering-strategies
+- https://nextjs.org/learn/seo/rendering-and-ranking/metadata
+- https://nextjs.org/learn/seo/web-performance
+- https://nextjs.org/learn/seo/improve/images

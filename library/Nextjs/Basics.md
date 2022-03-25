@@ -24,7 +24,7 @@
 		- Render page on server and send back to client (requires a server running)
 		- When content is dynamic (load from database), you may have to use server-side rendering or client-side rendering to keep data displayed always up to date. It's still possible to use Static Generation with a remote CMS.
 Pre-rendering is on per-page basis, i.e. choose different modes for different pages
-### Static Generation with Data using `getStaticProps`
+### Static Generation with Data using `getStaticProps` (SSG)
 Export an `async` function called `getStaticProps` and return the data fetched as props to UI component.
 #### Sample Code
 ```jsx
@@ -43,7 +43,7 @@ export async function getStaticProps() {
 ```
 - `getStaticProps` never runs on client side, so it's ok to write server side code such as database connection.
 - `getStaticProps` can only be exported from a page.
-### Fetching Data at Request Time
+### Fetching Data at Request Time (SSR)
 Use Server-side rendering instead.
 Export an `async` function called `getServerSideProps`, which will be called on server for every request.
 #### Sample Code
