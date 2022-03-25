@@ -1,4 +1,5 @@
 # nuxt/content
+
 ## Intro
 See [Documentation](https://content.nuxtjs.org/) for a full list of features.
 There are 2 highlights
@@ -86,3 +87,6 @@ Write plugins to do anything during hot reload during development.
 ## Usage
 See [Snippets](https://content.nuxtjs.org/snippets) for sample usage.
 
+## Sample Project
+
+[Nuxt-Content-Blog-Starter](https://github.com/TannerGilbert/Nuxt-Content-Blog-Starter)
