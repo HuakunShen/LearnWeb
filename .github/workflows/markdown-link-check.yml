@@ -20,5 +20,5 @@ jobs:
           submodules: recursive
       - name: Run link check
         run: |
-        npm i -g markdown-link-check
-        find . -name '*.md' -not -path "**/node_modules/*" -exec npx markdown-link-check {} \;
+          npm i -g markdown-link-check
+          find . -name '*.md' -not -path "**/node_modules/*" -exec npx markdown-link-check {} \;
