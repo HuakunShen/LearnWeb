@@ -1,5 +1,5 @@
 # SEO
-See [SEO](common/SearchEngine/SEO.md) for more general information.
+See [SEO](../../common/SearchEngine/SEO.md) for more general information.
 ## Status Code
 ### 200
 [`HTTP 200 OK`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)
@@ -76,7 +76,7 @@ The [`HTTP 503 Service Unavailable`](https://developer.mozilla.org/en-US/docs/We
 Used when website is down and predicted that it will be down by an extended period of time. This prevents losing rankings on a long-term basis.
 
 ## robots.txt
-See [robots.txt](robots.md).
+See [robots.txt](../../common/SearchEngine/robots.md).
 `robots.txt` specifies which routes can be crawled and which are not.
 In Next.js, add `robots.txt` to `public` folder.
 ```
@@ -190,7 +190,7 @@ export default IndexPage
 ```
 
 ## Canonical Tag
-See [Canonical Tag](../../comon/SearchEngine/CanonicalTag.md).
+See [Canonical Tag](../../common/SearchEngine/CanonicalTag.md).
 ![[CanonicalTag]]
 
 ## Rendering Strategies

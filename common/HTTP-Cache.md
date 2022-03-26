@@ -78,7 +78,7 @@ As HTTP is a client-server protocol, servers can't contact caches and clients wh
 
 Note that a stale resource is not evicted or ignored; when the cache receives a request for a stale resource, it forwards this request with a [`If-None-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) to check if it is in fact still fresh. If so, the server returns a [`304`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304) (Not Modified) header without sending the body of the requested resource, saving some bandwidth.
 
-![HTTPStaleness](HTTPStaleness.png)
+![HTTPStaleness](./HTTP-Cache.assets/HTTPStaleness.png)
 
 Freshness lifetime is calculated based on several headers.
 
@@ -106,7 +106,7 @@ All links to the new version files need to be changed. **Drawback:** additional 
 
 
 
-![HTTPRevved](HTTPRevved.png)
+![HTTPRevved](./HTTP-Cache.assets/HTTPRevved.png)
 
 
 
