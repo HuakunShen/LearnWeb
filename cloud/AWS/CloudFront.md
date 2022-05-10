@@ -13,3 +13,7 @@ Doc: [Serving private content with signed URLs and signed cookies](https://docs.
 ### Signed URLs
 
 [S3 Signed URL Doc](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html)
+
+# Reference
+
+- [YoutTube: AWS CloudFront Signed URL and Cookies | Visual Explanations](https://youtu.be/JIW_pV3zau8)

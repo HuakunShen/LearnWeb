@@ -1,10 +1,12 @@
 ---
-keyword: 
-- ORM
-- Node.js
-- TypeScript
+keyword:
+  - ORM
+  - Node.js
+  - TypeScript
 ---
+
 # Prisma
+
 > Next-generation Node.js and TypeScript **ORM**
 
 > Prisma helps app developers **build faster** and **make fewer errors** with an open source database toolkit for PostgreSQL, MySQL, SQL Server, SQLite and MongoDB (Preview).
@@ -12,6 +14,7 @@ keyword:
 [Prisma Website](https://www.prisma.io/)
 
 ## Supported Databases (Mar. 2022)
+
 - PostgreSQL
 - MySQL
 - SQLite
@@ -20,9 +23,59 @@ keyword:
 - CockroachDB
 
 ## Supported Languages
+
 - JavaScript
 - TypeScript
 
 ## Other Features
+
 - [GraphQL](https://www.prisma.io/graphql)
+
+# Migration
+
+[Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate)
+
+> Prisma Migrate is an imperative database schema migration tool that enables you to:
+>
+> - Keep your database schema in sync with your Prisma schema as it evolves and
+> - Maintain existing data in your database
+
+> Prisma Migrate generates a history of .sql migration files, and plays a role in both development and deployment.
+
+# CLI
+
+[Prisma CLI reference](https://www.prisma.io/docs/reference/api-reference/command-reference)
+
+## db pull
+
+`prisma db pull`
+
+[db pull](https://www.prisma.io/docs/reference/api-reference/command-reference#db-pull)
+
+> The db pull command connects to your database and adds Prisma models to your Prisma schema that reflect the current database schema.
+
+See [Introspection](#introspection) section.
+
+## db push
+
+`prisma db push`
+
+[db push](https://www.prisma.io/docs/reference/api-reference/command-reference#db-push)
+
+> The db push command pushes the state of your Prisma schema file to the database without using migrations. It creates the database if the database does not exist.
+
+## Migration
+
+`prisma migrate dev`
+
+Similar to also different from `db push`.
+
+> The migrate dev command updates your database using migrations during development and creates the database if it does not exist.
+
+MongoDB not supported.
+
+# Introspection
+
+[Introspection](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/mongodb/introspection-typescript-mongodb)
+
 
