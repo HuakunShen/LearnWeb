@@ -34,7 +34,10 @@ There are many configuration options, for example the `liveEdit` boolean attribu
 The [markdown](https://content.nuxtjs.org/configuration#markdown) configuration is definitely the most important option which let's you customize how you want your markdown file to be rendered using plugins, both external plugin and local plugin are supported.
 
 #### Sample
-```js[nuxt.config.js]
+
+`nuxt.config.js`
+
+```js
 export default {
   content: {
     markdown: {
