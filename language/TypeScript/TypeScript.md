@@ -9,6 +9,8 @@ title: TypeScript
 
 [Official Website](https://www.typescriptlang.org/)
 
+[Cheat Sheets](https://www.typescriptlang.org/cheatsheets)
+
 `npm i -g typescript`: Install TypeScript globally into your OS.
 
 Browsers only runs JavaScript which has lots of limitations and is not statically typed. TypeScript is like a wrapper for JavaScript, providing a layer of typing to facilitate development. In the end, TypeScript will be compiled to JavaScript.
@@ -25,7 +27,7 @@ You need to understand many concepts before building a TypeScript project, other
 
 ## module & target
 
-`module` in tsconfig.json tells the compiler what syntax to use for the modules in the emitted .js files. Frequently used values are "commonjs" (require/module.exports) or "ES2015" (import/export keywords), but there are other module systems. 
+`module` in tsconfig.json tells the compiler what syntax to use for the modules in the emitted .js files. Frequently used values are "commonjs" (require/module.exports) or "ES2015" (import/export keywords), but there are other module systems.
 
 `module` affects the **module syntax** of emitted code while `target` affects the rest.
 
@@ -50,13 +52,17 @@ Setting `module` to commonjs doesn't mean the produced js has to be commonjs. If
 
 So, if you are writing a server-side app using ESM format, the default strategy is "Classic", and you may want to switch to "node" to prevent errors.
 
+## esModuleInterop
+
+> Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility.
+
+[ES Module Interop - esModuleInterop](https://www.typescriptlang.org/tsconfig#esModuleInterop)
 
 # package.json
 
-Every JS project has a `package.json` specifying the dependencies and other configurations. 
+Every JS project has a `package.json` specifying the dependencies and other configurations.
 
 ## (Dev)Dependencies
-
 
 ## type
 
@@ -67,7 +73,7 @@ One problem you may encounter is that the compiler asks you to set `type` to be 
 > The "type" field defines the module format that Node.js uses for all .js files that have that package.json file as their nearest parent.
 > Files ending with .js are loaded as ES modules when the nearest parent package.json file contains a top-level field "type" with a value of "module".
 
-Default type is "commonjs". 
+Default type is "commonjs".
 
 Regardless of the value of the "type" field, `.mjs` files are always treated as ES modules and `.cjs` files are always treated as CommonJS.
 
@@ -95,11 +101,23 @@ In a package's `package.json` file, two fields can define entry points for a pac
 
 Read [Start a New Project](https://www.typescriptlang.org/docs/bootstrap). There are planty of boilerplates.
 
+# Bundler
+
+TypeScript relies on compiler and bundler to transform into JavaScript and achieve features like tree shaking, code spliting, compatibility, etc.
+
+- [Webpack](../compiler/webpack.md)
+- [Parcel](../compiler/parcel.md)
+- [Rollup](../compiler/rollup.md)
+- [Babel](../compiler/Babel.md)
+
 # Resource
 
+- [Official Website](https://www.typescriptlang.org/)
+- [Cheat Sheets](https://www.typescriptlang.org/cheatsheets)
 - [Official Microsoft TypeScript Dev Blogs](https://devblogs.microsoft.com/typescript)
   - You can find the announcement of latest TS versions here, new features are listed
 - [Stackoverflow: What is module option in tsconfig used for?](https://stackoverflow.com/questions/55471795/what-is-module-option-in-tsconfig-used-for/61215252#61215252)
 - [TS: Code Generation for Modules](https://www.typescriptlang.org/docs/handbook/modules.html#code-generation-for-modules)
 - [MDN: JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
-- [Dual CommonJS/ES module packages](https://nodejs.org/api/packages.html#dual-commonjses-module-packages)  
+- [Dual CommonJS/ES module packages](https://nodejs.org/api/packages.html#dual-commonjses-module-packages)
+
