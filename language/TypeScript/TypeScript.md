@@ -164,11 +164,12 @@ The following error messages are I got when trying to use top-level await, it te
 
 There are a few things to do to activate top-level await
 
-1. In `package.json`, set `"type": "module"`
+1. In `package.json`, set `"type": "module"` to make the package an ESM module
 2. In `tsconfig`
    1. Set `"target": "es2017"` or above
    2. Set `"module": "esnext"` or other options
 3. Add `export {}` to the end of the TypeScript file to execute to make it a module.
+4. Since it's a ESM module, if you want to run the script with `ts-node`, use `ts-node-esm` instead.
 
 ###### Top-Level Await Sample Code
 
