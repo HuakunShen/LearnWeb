@@ -2,6 +2,25 @@
 title: TypeScript
 ---
 
+- [Overview of TypeScript](#overview-of-typescript)
+- [Demo Sample Code](#demo-sample-code)
+- [tsconfig](#tsconfig)
+  - [module \& target](#module--target)
+  - [moduleResolution](#moduleresolution)
+  - [esModuleInterop](#esmoduleinterop)
+  - [paths](#paths)
+- [package.json](#packagejson)
+  - [(Dev)Dependencies](#devdependencies)
+  - [type](#type)
+  - [exports](#exports)
+  - [Package Entrypoints](#package-entrypoints)
+- [Features](#features)
+  - [Top-Level Await](#top-level-await)
+          - [Top-Level Await Sample Code](#top-level-await-sample-code)
+- [Bootstrap a Project](#bootstrap-a-project)
+- [Bundler](#bundler)
+- [Resource](#resource)
+
 # Overview of TypeScript
 
 > TypeScript is JavaScript with syntax for types.
@@ -59,6 +78,37 @@ So, if you are writing a server-side app using ESM format, the default strategy 
 
 ## esModuleInterop
 
+## paths
+
+`paths` option can be used to set shortcuts for long file paths.
+
+For example, `import Button from '../../../components/Button.ts'` can be simplified to `import Button from @components/Button.ts`.
+
+However there are 2 things to keep in mind.
+
+1. The `baseUrl` has to be set for `paths` to work.
+
+```json
+"baseUrl": "src",
+"paths": {
+  "@components/*": ["components/*"]
+}
+```
+
+2. `ts-node` doesn't work with `paths`. You have to compile first, then run the `.js` file.
+   1. To get `ts-node` working with `paths`, use `tsconfig-paths`. See https://typestrong.org/ts-node/docs/paths/
+   2. `npm i -D tsconfig-paths`
+   3. `tsconfig.json`:
+      ```json
+      {
+        "ts-node": {
+          // Do not forget to `npm i -D tsconfig-paths`
+          "require": ["tsconfig-paths/register"]
+        },
+        ...
+      }
+      ```
+
 > Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility.
 
 [ES Module Interop - esModuleInterop](https://www.typescriptlang.org/tsconfig#esModuleInterop)
@@ -102,6 +152,34 @@ In a package's `package.json` file, two fields can define entry points for a pac
 
 > The `"exports"`` provides a modern alternative to "main" allowing multiple entry points to be defined, conditional entry resolution support between environments, and preventing any other entry points besides those defined in "exports". This encapsulation allows module authors to clearly define the public interface for their package.
 
+# Features
+
+## Top-Level Await
+
+The following error messages are I got when trying to use top-level await, it tells us serveral things to do.
+
+> Top-level 'await' expressions are only allowed when the 'module' option is set to 'es2022', 'esnext', 'system', 'node16', or 'nodenext', and the 'target' option is set to 'es2017' or higher.
+
+> 'await' expressions are only allowed at the top level of a file when that file is a module, but this file has no imports or exports. Consider adding an empty 'export {}' to make this file a module.
+
+There are a few things to do to activate top-level await
+
+1. In `package.json`, set `"type": "module"`
+2. In `tsconfig`
+   1. Set `"target": "es2017"` or above
+   2. Set `"module": "esnext"` or other options
+3. Add `export {}` to the end of the TypeScript file to execute to make it a module.
+
+###### Top-Level Await Sample Code
+
+```ts
+async function main() {
+  console.log("name");
+}
+await main();
+export {};
+```
+
 # Bootstrap a Project
 
 Read [Start a New Project](https://www.typescriptlang.org/docs/bootstrap). There are planty of boilerplates.
@@ -125,4 +203,3 @@ TypeScript relies on compiler and bundler to transform into JavaScript and achie
 - [TS: Code Generation for Modules](https://www.typescriptlang.org/docs/handbook/modules.html#code-generation-for-modules)
 - [MDN: JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 - [Dual CommonJS/ES module packages](https://nodejs.org/api/packages.html#dual-commonjses-module-packages)
-
