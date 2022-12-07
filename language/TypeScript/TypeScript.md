@@ -21,6 +21,11 @@ TypeScript is a huge topic. It gets very complex when you want to build a comple
 
 You need to understand many concepts before building a TypeScript project, otherwise you may be blocked for some weird errors and couldn't find a solution online. The best solution to this is to learn all the basics before coding.
 
+# Demo Sample Code
+
+- [esm-cjs](https://github.com/HuakunShen/esm-cjs)
+  - Nodejs's module system (commonjs + ESM) is currently a mess to work with. Some libraries supports both, some libraries supports one of them. You need to know the difference to work with them. I built this [esm-cjs](https://github.com/HuakunShen/esm-cjs) repo to demonstrate how to work with these modules.
+
 # tsconfig
 
 `tsc --init` generates a TypeScript configuration template with most of the fields commented out and each field with a short description. The description may not be enough for you to understand everything. I will discuss some of the most important fields here.
