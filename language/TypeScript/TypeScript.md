@@ -13,6 +13,9 @@ title: TypeScript
   - [(Dev)Dependencies](#devdependencies)
   - [type](#type)
   - [exports](#exports)
+    - [exports for TypeScript](#exports-for-typescript)
+      - [Explanation](#explanation)
+      - [Sample](#sample)
   - [Package Entrypoints](#package-entrypoints)
 - [Features](#features)
   - [Top-Level Await](#top-level-await)
@@ -42,8 +45,8 @@ You need to understand many concepts before building a TypeScript project, other
 
 # Demo Sample Code
 
-- [esm-cjs](https://github.com/HuakunShen/esm-cjs)
-  - Nodejs's module system (commonjs + ESM) is currently a mess to work with. Some libraries supports both, some libraries supports one of them. You need to know the difference to work with them. I built this [esm-cjs](https://github.com/HuakunShen/esm-cjs) repo to demonstrate how to work with these modules.
+- [ts-esm-cjs](https://github.com/HuakunShen/ts-esm-cjs)
+  - Nodejs's module system (commonjs + ESM) is currently a mess to work with. Some libraries supports both, some libraries supports one of them. You need to know the difference to work with them. I built this [ts-esm-cjs](https://github.com/HuakunShen/ts-esm-cjs) repo to demonstrate how to work with these modules.
 
 # tsconfig
 
@@ -141,6 +144,84 @@ Type: `<Object> | <string> | <string[]>`
 The "exports" field allows defining the [entry points](https://nodejs.org/api/packages.html#package-entry-points) of a package when imported by name loaded either via a node_modules lookup or a self-reference to its own name. It is supported in Node.js 12+ as an alternative to the "main" that can support defining subpath exports and conditional exports while encapsulating internal unexported modules.
 
 [Conditional Exports](https://nodejs.org/api/packages.html#conditional-exports) can also be used within "exports" to define different package entry points per environment, including whether the package is referenced via require or via import.
+
+### exports for TypeScript
+
+`exports` works well with nodejs. See my sample code here [ts-esm-cjs](https://github.com/HuakunShen/ts-esm-cjs).
+
+However, it doesn't work with TypeScript as of Dec 2022. I tried many things and discovered that it's not possible as of now.
+
+The problem is, TypeScript cannot find the subpath although it's declared in `package.json`.
+
+I've seen many packages supporting subpath exports such as `@apollo/server`, e.g. `import { expressMiddleware } from '@apollo/server/express4';`.
+
+So I learnt how they do it their way. It's not as elegant as the original nodejs version, but it works.
+
+#### Explanation
+
+- This is `@apollo/server`'s main `package.json`. `https://github.com/apollographql/apollo-server/blob/main/packages/server/package.json`
+  - It's normal, same as how we define nodejs `exports`in `package.json`
+- The trick is to add a new folder with a `package.json` in it.
+  - The folder needs to have the same name as the subpath you want, in this case, it's `express4`.
+  - See https://github.com/apollographql/apollo-server/tree/main/packages/server/express4 for how they do it.
+  - The module name would be `"name": "@apollo/server/express4"` with the subpath.
+  - Use traditional `main`, `module` and `types` to export `.cjs` (compiled commonjs), `.mjs` (compiled ESM) and `.d.ts` types declaration.
+
+#### Sample
+
+Suppose we have a package `core`, and want to have subpath `plugin` to allow users to `import plugin from "core/plugin"`.
+
+**Folder Structure with depth=2**
+
+```
+├── dist
+│   ├── index.d.ts
+│   ├── index.cjs
+│   ├── index.mjs
+│   ├── plugin.d.ts
+│   ├── plugin.cjs
+│   ├── plugin.mjs
+├── src
+│   └── plugin
+├── plugin
+│   └── package.json
+└── package.json
+```
+
+**Main `package.json`**
+
+```json
+{
+  ...
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./plugin": {
+      "require": "./dist/plugin.cjs",
+      "import": "./dist/plugin.mjs",
+      "types": "./dist/plugin.d.ts"
+    }
+  },
+  ...
+}
+```
+
+**`plugin/package.json`**
+
+```json
+{
+  "name": "@crosscopy/core/plugin",
+  "type": "module",
+  "main": "../dist/plugin.js",
+  "module": "../dist/plugin.mjs",
+  "types": "../dist/plugin.d.ts",
+  "sideEffects": false
+}
+```
 
 ## Package Entrypoints
 

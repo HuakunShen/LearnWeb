@@ -49,3 +49,7 @@ It's possible to mix them.
         const { foo } = await import("./foo.mjs");
       })();
       ```
+
+# Workspace
+
+Follow this example, https://docs.npmjs.com/cli/v9/using-npm/workspaces?v=true, it's very simple. 
