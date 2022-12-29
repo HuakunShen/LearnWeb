@@ -36,7 +36,6 @@ https://www.apollographql.com/docs/
 
 By default, Apollo Server omits the `exception.stacktrace` field if the NODE_ENV environment variable is set to either `production` or `test`.
 
-
 ## Sample Error Output
 
 ```json
@@ -90,23 +89,22 @@ For example:
 // ...
 userWithID: (parent, args, context) => {
   if (args.id < 1) {
-    throw new UserInputError('Invalid argument value');
+    throw new UserInputError("Invalid argument value");
   }
   // ...fetch correct user...
 };
 // ...
 
 // Custom Error Info
-throw new UserInputError('Invalid argument value', {
-  argumentName: 'id',
+throw new UserInputError("Invalid argument value", {
+  argumentName: "id",
 });
 // ...
 ```
 
-<details>
 Sample Error Output for Customized Input
-<code>
-<pre>
+
+```json
 {
   "errors": [
     {
@@ -117,9 +115,7 @@ Sample Error Output for Customized Input
           "column": 3
         }
       ],
-      "path": [
-        "userWithID"
-      ],
+      "path": ["userWithID"],
       "extensions": {
         "argumentName": "id",
         "code": "BAD_USER_INPUT",
@@ -127,17 +123,14 @@ Sample Error Output for Customized Input
           "stacktrace": [
             "UserInputError: Invalid argument value",
             "    at userWithID (/my-project/index.js:25:13)",
-            "    ...more lines...",
+            "    ...more lines..."
           ]
         }
       }
     }
   ]
 }
-</pre>
-</code>
-</details>
-
+```
 
 ## Custom Errors
 

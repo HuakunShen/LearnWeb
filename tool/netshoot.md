@@ -5,7 +5,6 @@
 A docker image with plenty of pre-installed tools for troubleshooting networks.
 Tools include, iperf, nmap, socat, strace, tcpdump, tshark, vim and much more. Read the Docs for a full list.
 
-![]()
 ![linux-performance-observability-tools](./attachments/linux-performance-observability-tools.png)
 
 # Usage

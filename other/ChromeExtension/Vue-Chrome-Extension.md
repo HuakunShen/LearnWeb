@@ -27,7 +27,8 @@ Let's suppose you want to build 2 diffrent pages, one for popup and one for opti
    1. `./src/options.ts` and `./src/popup.ts` will be the entrypoint when building the 2 pages
    2. `./src/Popup.vue` and `./src/Options.vue` will be the 2 pages themselves
 6. In `vite.config.ts`, add the following to `defineConfig`
-  ```js
+
+```js
 import { fileURLToPath, URL } from 'url'
 
 import { defineConfig } from 'vite'
@@ -59,8 +60,8 @@ export default defineConfig({
     }
   }
 })
+```
 
-  ```
 7. Now, if you run `npm run build`, the dist folder will contain `options.html` and `popup.html`
 8. Note that the `index.html` is not deleted. It's used for development server.
    1. Toggle the `src` attribute between `/src/popup.ts` and `/src/options.ts` to decide which page you want to develop.

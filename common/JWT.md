@@ -8,13 +8,13 @@
 
 ### Session Cookie
 
-<p align=center>
+<p align="center">
     <img src="JWT.assets/image-20200913180715218.png" alt="image-20200913180715218" width="60%" />
 </p>
 
 ### JWT
 
-<p align=center>
+<p align="center">
     <img src="JWT.assets/image-20200913180744017.png" alt="image-20200913180744017" width="60%" />
 </p>
 
@@ -24,7 +24,7 @@ A secret key is needed for verifying a JWT.
 
 ### How is JWT Verified
 
-<p align=center>
+<p align="center">
     <img src="JWT.assets/image-20200913182219280.png" alt="image-20200913182219280" width="80%" />
 </p>
 
