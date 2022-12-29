@@ -6,7 +6,7 @@ title: Gatsby.js
 
 > Gatsby is **an open-source framework that combines functionality from React, GraphQL and Webpack into a single tool for building static websites and apps**.
 
-Static Site Generation is very common, [Next.js](../framework/Nextjs/intro.md) and [Nuxt.js](../framework/Nuxtjs/Intro.md) both supports Static Site Generation.
+Static Site Generation is very common, [Next.js](../framework/Nextjs/Intro.md) and [Nuxt.js](../framework/Nuxtjs/Intro.md) both supports Static Site Generation.
 To me, Gatsby is like a wrapper of Next.js. Next.js give users the freedom to do whatever they like (get data from anywhere). Many syntax and features of Gatsby seem to be similar to next.js. Gatsby does not give that much freedom (not really, you can still do anything), instead, it did most of the stuff for you. With plugins, all data will be served through GraphQL.
 
 # What's special about Gatsby?

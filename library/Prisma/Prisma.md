@@ -66,7 +66,7 @@ See [Introspection](#introspection) section.
 
 If you made some changes to your Prisma schema, you need to run `prisma generate` first and `prisma db push` to update the database. Otherwise changes like `@unique` property will not be updated to DB. Note, you may also want to use Migration if it's an update but not an initialization.
 
-<h2 style="color: red">Be Very Careful with this Command, You could lose Data</h2>
+<h2 className="text-red-400">Be Very Careful with this Command, You could lose Data</h2>
 
 Read [Choosing db push or Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate/db-push#choosing-db-push-or-prisma-migrate).
 
@@ -92,12 +92,11 @@ Read [Choosing db push or Prisma Migrate](https://www.prisma.io/docs/concepts/co
 
 Read [Docs: Transactions and Batch Queries](https://www.prisma.io/docs/concepts/components/prisma-client/transactions)
 
-
 ## Sequential Prisma Client Operations
 
 ```js
 const [posts, totalPosts] = await prisma.$transaction([
-  prisma.post.findMany({ where: { title: { contains: 'prisma' } } }),
+  prisma.post.findMany({ where: { title: { contains: "prisma" } } }),
   prisma.post.count(),
-])
+]);
 ```
