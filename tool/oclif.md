@@ -1,8 +1,6 @@
 ---
-title: oclif
+title: Oclif
 ---
-
-# oclif
 
 https://oclif.io/
 
@@ -11,7 +9,7 @@ https://oclif.io/
 
 Oclif is for building console app, probably shouldn't be part of **LearnWeb**, but since it's using nodejs, I will include it in **LearnWeb**.
 
-# features
+## features
 
 https://oclif.io/docs/features
 

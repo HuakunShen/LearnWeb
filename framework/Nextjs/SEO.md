@@ -1,5 +1,5 @@
 # SEO
-See [SEO](../../common/SearchEngine/SEO.md) for more general information.
+See [SEO](../../Common/SearchEngine/SEO.md) for more general information.
 ## Status Code
 ### 200
 [`HTTP 200 OK`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)
@@ -76,7 +76,7 @@ The [`HTTP 503 Service Unavailable`](https://developer.mozilla.org/en-US/docs/We
 Used when website is down and predicted that it will be down by an extended period of time. This prevents losing rankings on a long-term basis.
 
 ## robots.txt
-See [robots.txt](../../common/SearchEngine/robots.md).
+See [robots.txt](../../Common/SearchEngine/robots.md).
 `robots.txt` specifies which routes can be crawled and which are not.
 In Next.js, add `robots.txt` to `public` folder.
 ```
@@ -92,7 +92,7 @@ Allow: /
 File available at `http://<host>:<port>/robots.txt`.
 
 ## Sitemaps
-Read [Sitemaps](../../common/SearchEngine/Sitemaps.md).
+Read [Sitemaps](../../Common/SearchEngine/Sitemaps.md).
 ![[Sitemaps]]
 ### Add sitemaps to Next.js
 #### Manual
@@ -165,7 +165,7 @@ export default SiteMap
 ```
 
 ## Special Meta Tags for Search Engines
-See [Special Meta Tags for Search Engines](../../common/SearchEngine/MetaTag.md).
+See [Special Meta Tags for Search Engines](../../Common/SearchEngine/MetaTag.md).
 ![[MetaTag]]
 
 
@@ -190,7 +190,7 @@ export default IndexPage
 ```
 
 ## Canonical Tag
-See [Canonical Tag](../../common/SearchEngine/CanonicalTag.md).
+See [Canonical Tag](../../Common/SearchEngine/CanonicalTag.md).
 ![[CanonicalTag]]
 
 ## Rendering Strategies
@@ -209,7 +209,7 @@ See [Rendering Strategies](https://nextjs.org/learn/seo/rendering-and-ranking/re
 Nextjs supports [AMP](https://nextjs.org/learn/seo/rendering-and-ranking/amp).
 
 ## Performance & Core Web Vitals
-See [SEO](../../common/SearchEngine/SEO.md) for details.
+See [SEO](../../Common/SearchEngine/SEO.md) for details.
 ### Auto Image Optimization
 [Tutorial](https://nextjs.org/learn/seo/improve/images)
 #### On-demand Optimization

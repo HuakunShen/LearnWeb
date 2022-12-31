@@ -6,7 +6,7 @@ date: 2022-5-16
 
 At the time of writing this note, official Vue has switched to Vite, which is a much faster alternative of original Vue CLI.
 
-See [Vite Note](../../framework/vite/README.md) for more details.
+See [Vite Note](../../Framework/vite/README.md) for more details.
 
 See [Sample Code](#sample-code)
 

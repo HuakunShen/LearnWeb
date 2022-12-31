@@ -2,16 +2,16 @@
 
 ## General
 
-[Cookies](./common/Cookies.md)
+[Cookies](./Common/Cookies.md)
 
 ## Frontend
 
-[Browser Storage (Cookies, SessionStorage, LocalStorage)](./common/BrowserStorage.md)
+[Browser Storage (Cookies, SessionStorage, LocalStorage)](./Common/BrowserStorage.md)
 
 ## Backend
 
 ## Authentication
 
-[JWT (Json Web Token)](./common/JWT.md)
+[JWT (Json Web Token)](./Common/JWT.md)
 
-[Cookies](./common/Cookies.md)
+[Cookies](./Common/Cookies.md)

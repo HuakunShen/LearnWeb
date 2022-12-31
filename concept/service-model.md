@@ -4,15 +4,15 @@
 
 ## SaaS
 
-Software as a Service
+[Cloudflare: What is BaaS? | Backend-as-a-Service vs. serverless](https://www.cloudflare.com/en-ca/learning/serverless/glossary/backend-as-a-service-baas/)
 
 ## PaaS
 
-Platform as a Service
+[Cloudflare: What is Platform-as-a-Service (PaaS)?](https://www.cloudflare.com/en-ca/learning/serverless/glossary/platform-as-a-service-paas/)
 
 ## IaaS
 
-Infrastructure as a Service
+[Cloudflare: What is IaaS (Infrastructure-as-a-Service)?](https://www.cloudflare.com/en-ca/learning/cloud/what-is-iaas/)
 
 ## DaaS
 
@@ -20,7 +20,7 @@ Data as a Service
 
 ## IaaC
 
-Infrastructure as a Code
+[Infrastructure as a Code](https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac)
 
 # Summary
 
