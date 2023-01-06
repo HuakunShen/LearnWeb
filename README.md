@@ -1,17 +1,19 @@
 # Web Dev
 
-## General
+## Related Topics
 
-[Cookies](./Common/Cookies.md)
+Web Development is a giant topic.
 
-## Frontend
+Some more specific topics listed separately
 
-[Browser Storage (Cookies, SessionStorage, LocalStorage)](./Common/BrowserStorage.md)
+- [Web Scraping / Web Crawler](../LearnWebScraping/)
+- [System Design](../LearnSystemDesign/)
+- [Penetration Testing](../LearnPenetrationTesting/)
+- [Tools](../LearnWeb/)
+- [Docker](../LearnDocker/)
 
-## Backend
+Most of my projects are related to web development. 
 
-## Authentication
+See [My Projects](/projects) and [My Projects (Old Website)](https://huakunshen.com/projects) for more information. 
 
-[JWT (Json Web Token)](./Common/JWT.md)
-
-[Cookies](./Common/Cookies.md)
+Also see [My Videos](/videos) and [YouTube Channel](https://www.youtube.com/channel/UC1gJeFbvRcQXDC_C8nKetdA) for the videos (tutorials) I made.
