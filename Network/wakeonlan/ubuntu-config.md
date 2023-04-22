@@ -1,5 +1,5 @@
 ---
-title: WakeOnLan Config on Ubuntu
+title: Ubuntu Config
 ---
 
 Read the [official doc](https://help.ubuntu.com/community/WakeOnLan).
