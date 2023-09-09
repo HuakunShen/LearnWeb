@@ -266,6 +266,9 @@ export {};
 
 Read [Start a New Project](https://www.typescriptlang.org/docs/bootstrap). There are planty of boilerplates.
 
+Update (Aug 2023): Look at archive https://web.archive.org/web/20220609161653/https://www.typescriptlang.org/docs/bootstrap, https://www.typescriptlang.org/docs/bootstrap is missing.
+
+
 # Bundler
 
 TypeScript relies on compiler and bundler to transform into JavaScript and achieve features like tree shaking, code spliting, compatibility, etc.
